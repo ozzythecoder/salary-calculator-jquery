@@ -27,6 +27,7 @@ body {
 
 .table-header-cell {
   display: table-cell;
+  width: 120px;
   padding: 7px;
   text-align: justify;
   border-bottom: 1px solid #464646;
@@ -51,6 +52,12 @@ body {
 
 .salary-cell {
   text-align: right;
+  width: 100px;
+}
+
+.delete-cell {
+  text-align: center;
+  width: 60px;
 }
 
 #table-footer {

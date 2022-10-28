@@ -8,6 +8,14 @@ let employees = [
     jobTitle: 'Button Pusher',
     annualSalary: 55000,
     globalID: 4
+  },
+  {
+    firstName: 'Thelonius',
+    lastName: 'Monk',
+    employeeID: 202910,
+    jobTitle: 'Master of Soul',
+    annualSalary: 100000,
+    globalID: 89
   }
 ];
 let globalID = 0;
@@ -18,6 +26,7 @@ function onReady() {
   render();
   // handle submit event
   $('#submit-employee').on('click', onSubmit)
+
   // handle delete event
 }
 
@@ -68,6 +77,7 @@ function render() {
   let totalSalaries = 0;
 
   for (let emp of employees) {
+    console.log('employee salary is', emp.annualSalary);
     totalSalaries += emp.annualSalary;
     $('#table-body').append(`    
     <div class="table-row" data="${emp.globalID}">
@@ -92,7 +102,7 @@ function render() {
     </div>
     `);
   }
-
+  $('#total-salaries').empty();
   $('#total-salaries').append(`
     $${totalSalaries}
   `)
