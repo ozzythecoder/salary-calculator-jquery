@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,25 +10,31 @@
   <link href="styles.css" rel="stylesheet" />
   <title>Document</title>
 </head>
+
 <body>
   <div id="container">
-    <div id="header"></div>
+    <div id="header">
+      <h1>Salary Calculator</h1>
+    </div>
     <div id="employee-adder">
       <div class="subheading"></div>
       <div id="employee-form">
-        <input type="text" id="first-name" />
-        <input type="text" id="last-name" />
-        <input type="text" id="employee-id" />
-        <input type="text" id="job-title" />
-        <input type="text" id="annual-salary" />
+        <input type="text" id="first-name" placeholder="First Name" />
+        <input type="text" id="last-name" placeholder="Last Name"/>
+        <input type="text" id="employee-id" placeholder="ID"/>
+        <input type="text" id="job-title" placeholder="Title"/>
+        <input type="text" id="annual-salary" placeholder="Annual Salary"/>
         <button id="submit-employee">Submit</button>
       </div>
     </div>
+    <div id="employee-table">
+      <div class="subheading"></div>
+      <div id="employee-display">
 
+      </div>
+    </div>
 
-
-
+    <div id="total-monthly"></div>
   </div> 
-  
 </body>
 </html>
