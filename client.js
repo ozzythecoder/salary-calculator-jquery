@@ -28,6 +28,21 @@ function onReady() {
   $('#submit-employee').on('click', onSubmit)
 
   // handle delete event
+  $('#table-body').on('click', '.delete-btn', onDelete)
+}
+
+function onDelete() {
+  console.log('in onDelete()');
+  let idToDelete = $(this).parent().parent().data('id');
+  console.log('id to delete is', idToDelete);
+
+  for (let emp of employees) {
+    if (emp.globalID == idToDelete) {
+      employees.splice(employees.indexOf(emp), 1);
+    }
+  }
+
+  render();
 }
 
 function handleErrors(obj) {
@@ -74,13 +89,17 @@ function onSubmit() {
 function render() {
   $('#table-body').empty();
 
+  // to count total salaries
   let totalSalaries = 0;
 
   for (let emp of employees) {
-    console.log('employee salary is', emp.annualSalary);
+
+    // add employee's salary to the count
     totalSalaries += emp.annualSalary;
+ 
+    // add employee detais to the table
     $('#table-body').append(`    
-    <div class="table-row" data="${emp.globalID}">
+    <div class="table-row" data-id="${emp.globalID}">
       <div class="table-row-cell first-name-cell">
         ${emp.firstName}
       </div>    
