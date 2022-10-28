@@ -1,5 +1,6 @@
 # HTML
-- [ ] Refresh on forms & inputs
+- [ ] Refresher on forms & inputs
+- [ ] How to build the employees table
 
 # CSS
 - [ ] How to create a table in CSS
@@ -7,6 +8,6 @@
 - [ ] Flexbox?
 
 # JS / jQ
-- [ ] Handle submit
+- [x] Handle submit
+- [x] Error handler
 - [ ] Renderer
-- [ ] Error handler

@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#employee-display {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#employee-table {
+  display: table;
+  margin: 0 auto;
+}
+
+#table-caption {
+  display: table-caption;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+#table-header {
+  display: table-header-group;
+  font-weight: bold;
+  background-color: #a5a5a5;
+}
+
+.table-header-cell {
+  display: table-cell;
+  padding: 7px;
+  text-align: justify;
+  border-bottom: 1px solid #464646;
+}
+
+#table-body {
+  display: table-row-group;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-row:nth-of-type(even) {
+  background-color: lightgrey;
+}
+
+.table-row-cell {
+  padding: 10px;
+  display: table-cell;
+}
+
+.salary-cell {
+  text-align: right;
+}
+
+#table-footer {
+  display: table-footer-group;
+}
+
+.table-footer-cell {
+  padding: 10px;
+  border-top: 5px solid #464646;
+  display: table-cell;
+}
+
+#total-salaries {
+  height: 20px;
+  font-size: 22px;
+  text-align: right;
+}

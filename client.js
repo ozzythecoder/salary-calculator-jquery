@@ -19,6 +19,7 @@ function handleErrors(obj) {
     console.log('all fields required');
     return false;
   }
+
   return true;
 }
 
@@ -38,6 +39,7 @@ function onSubmit() {
     return false;
   }
 
+  // if no errors, push new employee and increment global id
   employees.push(newEmployee);
   globalID++;
 
