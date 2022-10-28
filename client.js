@@ -1,6 +1,15 @@
 $( document ).ready(onReady);
 
-let employees = [];
+let employees = [
+  {
+    firstName: 'Thomas',
+    lastName: 'Anderson',
+    employeeID: 78309,
+    jobTitle: 'Button Pusher',
+    annualSalary: 55000,
+    globalID: 4
+  }
+];
 let globalID = 0;
 
 function onReady() {
@@ -30,7 +39,7 @@ function onSubmit() {
     lastName: $('#last-name').val(),
     employeeID: $('#employee-id').val(),
     jobTitle: $('#job-title').val(),
-    annualSalary: $('#annual-salary').val(),
+    annualSalary: Number($('#annual-salary').val()),
     globalID: globalID
   }
 
@@ -47,11 +56,45 @@ function onSubmit() {
   $('#first-name').val('');
   $('#last-name').val('');
   $('#employee-id').val('');
+  $('#job-title').val('');
   $('#annual-salary').val('');
 
   render();
 }
 
 function render() {
+  $('#table-body').empty();
 
+  let totalSalaries = 0;
+
+  for (let emp of employees) {
+    totalSalaries += emp.annualSalary;
+    $('#table-body').append(`    
+    <div class="table-row" data="${emp.globalID}">
+      <div class="table-row-cell first-name-cell">
+        ${emp.firstName}
+      </div>    
+      <div class="table-row-cell last-name-cell">
+        ${emp.lastName}
+      </div>    
+      <div class="table-row-cell employee-id-cell">
+        ${emp.employeeID}
+      </div>    
+      <div class="table-row-cell job-title-cell">
+        ${emp.jobTitle}
+      </div>    
+      <div class="table-row-cell salary-cell">
+        $${emp.annualSalary}
+      </div>
+      <div class="table-row-cell delete-cell">
+        <button class="delete-btn">Delete</button>
+      </div>    
+    </div>
+    `);
+  }
+
+  $('#total-salaries').append(`
+    $${totalSalaries}
+  `)
+    
 }
