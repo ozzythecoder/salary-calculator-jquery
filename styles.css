@@ -1,13 +1,22 @@
+* {
+  font-family: 'Libre Franklin', Arial, Helvetica, sans-serif;
+}
+
 body, h1, h2, h3, p, li {
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: #EDEDE9;
 }
 
 #container {
   margin: 10px 10%;
   border: 2px black solid;
   border-radius: 20px;
-  overflow-x: scroll;
+  background-color: #F5EBE0;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3))
 }
 
 h1 {
@@ -15,13 +24,23 @@ h1 {
 }
 
 #content {
-  margin: 10px 10%;
   padding: 2em 4em;
 }
 
 .subheading {
   text-align: center;
   padding: 1em;
+}
+
+button {
+  background-color: #E3D5CA;
+  border: 1px solid #464646;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3))
+}
+
+button:active {
+  background-color: #464646;
+  color: white;
 }
 
 #add-employee-form button {
@@ -37,6 +56,7 @@ h1 {
   height: 1.5em;
   margin: 0 auto;
   margin-bottom: 0.5em;
+  padding-left: 5px;
 }
 
 #feedback-area {
@@ -47,6 +67,10 @@ h1 {
   line-height: 1;
   color:rgb(199, 0, 0);
   font-weight: bold;
+}
+
+#employee-display {
+  overflow-x: scroll;
 }
 
 #employee-table {
@@ -64,7 +88,7 @@ h1 {
 #table-header {
   display: table-header-group;
   font-weight: bold;
-  background-color: #a5a5a5;
+  background-color: #D5BDAF;
 }
 
 .visually-hidden {
@@ -80,6 +104,7 @@ h1 {
 .table-header-cell {
   display: table-cell;
   width: 120px;
+  min-width: 80px !important;
   padding: 10px;
   text-align: justify;
   border-bottom: 1px solid #464646;
@@ -94,7 +119,7 @@ h1 {
 }
 
 .table-row:nth-of-type(even) {
-  background-color: lightgrey;
+  background-color: #D5BDAF66;
 }
 
 .table-row-cell {
