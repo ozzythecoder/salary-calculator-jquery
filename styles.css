@@ -11,6 +11,10 @@ body {
   background-color: #EDEDE9;
 }
 
+footer {
+  height: 100px;
+}
+
 #container {
   margin: 10px 10%;
   border: 2px black solid;
@@ -125,24 +129,26 @@ button:active {
 .table-row-cell {
   padding: 10px;
   display: table-cell;
+  vertical-align: middle;
+  border-right: 1px solid #46464655;
 }
 
 .employee-id-cell {
-  width: 80px;
+  width: 60px;
 }
 
 .job-title-cell {
-  width: 120px;
+  width: 140px;
 }
 
 .salary-cell {
   text-align: right;
-  width: 120px;
 }
 
 .delete-cell {
   text-align: center;
   width: 90px;
+  border-right: none;
 }
 
 #table-footer {
@@ -150,12 +156,14 @@ button:active {
 }
 
 .table-footer-cell {
-  padding: 10px;
   border-top: 5px solid #464646;
   display: table-cell;
+  padding: 10px;
+  vertical-align: middle;
 }
 
 #salary-label {
+  display: table-cell;
   text-align: right;
 }
 

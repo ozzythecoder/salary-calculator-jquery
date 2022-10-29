@@ -5,8 +5,8 @@
 - [x] How to create a table in CSS
 - [x] Display properties
 - [ ] Flexbox?
-- [ ] Color scheme
-- [ ] Typography
+- [x] Color scheme
+- [x] Typography
 
 # JS / jQ
 - [x] Handle submit
