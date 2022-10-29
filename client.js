@@ -123,7 +123,7 @@ function render() {
   }
   $('#total-salaries').empty();
   $('#total-salaries').append(`
-    $${totalSalaries}
+    $${Math.ceil(totalSalaries / 12)}<br>/ month
   `)
     
 }

@@ -13,58 +13,59 @@
 
 <body>
   <div id="container">
-    <div id="header">
-      <h1>Salary Calculator</h1>
-    </div>
-    <div id="employee-adder">
-      <div class="subheading">Add an employee</div>
-      <div id="employee-form">
-        <input type="text" id="first-name" placeholder="First Name" />
-        <input type="text" id="last-name" placeholder="Last Name"/>
-        <input type="text" id="employee-id" placeholder="ID"/>
-        <input type="text" id="job-title" placeholder="Title"/>
-        <input type="text" id="annual-salary" placeholder="Annual Salary"/>
-        <button id="submit-employee">Submit</button>
-      </div>
-      <div id="feedback-area">Feedback here
-      </div>
-    </div>
-    <div id="employee-display">
-      <div id="employee-table">
-        <div id="table-caption">Employees & Salaries</div>
-        <div id="table-header">
-          <div class="table-header-cell">
-            First Name  
-          </div>
-          <div class="table-header-cell">
-            Last Name
-          </div>
-          <div class="table-header-cell">
-            Employee ID
-          </div>
-          <div class="table-header-cell">
-            Job Title
-          </div>
-          <div class="table-header-cell salary-cell">
-            Annual Salary
-          </div>
-          <div class="table-header-cell delete-cell">
-            Delete?
-          </div>
+    <div id="content">
+        <h1>Salary Calculator</h1>
+      <div id="add-an-employee">
+        <div class="subheading"><h3>Add an employee:</h3></div>
+        <div id="add-employee-form">
+          <input type="text" id="first-name" placeholder="First Name" />
+          <input type="text" id="last-name" placeholder="Last Name"/>
+          <input type="text" id="employee-id" placeholder="ID"/>
+          <input type="text" id="job-title" placeholder="Title"/>
+          <input type="text" id="annual-salary" placeholder="Annual Salary"/>
+          <button id="submit-employee">Submit</button>
         </div>
-        
-        <div id="table-body">
-        
-        </div>
-        <div id="table-footer">
-          <div class="table-footer-cell"></div>
-          <div class="table-footer-cell"></div>
-          <div class="table-footer-cell"></div>
-          <div class="table-footer-cell" id="salary-label">Total Salaries:</div>
-          <div class="table-footer-cell" id="total-salaries"></div>
-          <div class="table-footer-cell"></div>
+        <div id="feedback-area">Feedback here
         </div>
       </div>
-  </div> 
+      <div id="employee-display">
+        <div id="employee-table">
+          <div id="table-caption">Employees & Salaries</div>
+          <div id="table-header">
+            <div class="table-header-cell">
+              First Name  
+            </div>
+            <div class="table-header-cell">
+              Last Name
+            </div>
+            <div class="table-header-cell">
+              Employee ID
+            </div>
+            <div class="table-header-cell">
+              Job Title
+            </div>
+            <div class="table-header-cell salary-cell">
+              Annual Salary
+            </div>
+            <div class="table-header-cell delete-cell">
+              Delete?
+            </div>
+          </div>
+          
+          <div id="table-body">
+          
+          </div>
+          <div id="table-footer">
+            <div class="table-footer-cell"></div>
+            <div class="table-footer-cell"></div>
+            <div class="table-footer-cell"></div>
+            <div class="table-footer-cell" id="salary-label">Total Cost:</div>
+            <div class="table-footer-cell" id="total-salaries"></div>
+            <div class="table-footer-cell"></div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
 </body>
 </html>

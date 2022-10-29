@@ -1,10 +1,9 @@
 # HTML
 - [ ] Refresher on forms & inputs
-- [ ] How to build the employees table
 
 # CSS
-- [ ] How to create a table in CSS
-- [ ] Display properties
+- [x] How to create a table in CSS
+- [x] Display properties
 - [ ] Flexbox?
 
 # JS / jQ
