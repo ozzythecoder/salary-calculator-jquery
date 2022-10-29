@@ -1,5 +1,6 @@
 $( document ).ready(onReady);
 
+// global variables
 let employees = [
   {
     firstName: 'Thomas',
@@ -7,7 +8,7 @@ let employees = [
     employeeID: 78309,
     jobTitle: 'Button Pusher',
     annualSalary: 55000,
-    globalID: 4
+    globalID: 0
   },
   {
     firstName: 'Thelonius',
@@ -15,7 +16,7 @@ let employees = [
     employeeID: 202910,
     jobTitle: 'Master of Soul',
     annualSalary: 100000,
-    globalID: 89
+    globalID: 1
   },
   {
     firstName: 'Ebenezer',
@@ -23,19 +24,11 @@ let employees = [
     employeeID: 01,
     jobTitle: 'Pincher of Pennies',
     annualSalary: 10000000,
-    globalID: 420
+    globalID: 2
   }
 ];
-let globalID = 0;
 
-// calculate monthly cost of all employees' salaries
-const monthlyCost = () => {
-  let total = 0;
-  for (let emp of employees) {
-    total += emp.annualSalary;
-  }
-  return Math.ceil(total / 12); // rounds up to the nearest dollar
-}
+let globalID = employees.length; // unique identifier for employees
 
 function onReady() {
   console.log('jQ');
@@ -47,22 +40,6 @@ function onReady() {
   // handle delete event
   $('#table-body').on('click', '.delete-btn', onDelete)
 }
-
-// delete employee
-function onDelete() {
-  console.log('in onDelete()');
-  let idToDelete = $(this).parent().parent().data('id');
-  console.log('id to delete is', idToDelete);
-
-  for (let emp of employees) {
-    if (emp.globalID == idToDelete) {
-      employees.splice(employees.indexOf(emp), 1);
-    }
-  }
-
-  render();
-} // end onDelete()
-
 
 // handle errors
 function handleErrors(obj) {
@@ -119,20 +96,38 @@ function onSubmit() {
   $('#annual-salary').val('');
 
   render();
-}
+} // end onSubmit()
 
-function render() {
-  $('#table-body').empty();
-
-  // to count total salaries
-  let totalSalaries = 0;
+// delete employee
+function onDelete() {
+  console.log('in onDelete()');
+  let idToDelete = $(this).parent().parent().data('id');
+  console.log('id to delete is', idToDelete);
 
   for (let emp of employees) {
+    if (emp.globalID == idToDelete) {
+      employees.splice(employees.indexOf(emp), 1);
+    }
+  }
 
-    // add employee's salary to the count
-    totalSalaries += emp.annualSalary;
- 
-    // add employee detais to the table
+  render();
+} // end onDelete()
+
+// calculate monthly cost of all employees' salaries
+function monthlyCost() {
+  let total = 0;
+  for (let emp of employees) {
+    total += emp.annualSalary;
+  }
+  return Math.ceil(total / 12); // rounds up to the nearest dollar
+} // end monthlyCost()
+
+function render() {
+
+  $('#table-body').empty();
+
+  for (let emp of employees) {
+    // add employee detais to a new table row
     $('#table-body').append(`    
     <div class="table-row" data-id="${emp.globalID}">
       <div class="table-row-cell first-name-cell">
@@ -154,19 +149,21 @@ function render() {
         <button class="delete-btn">Delete</button>
       </div>    
     </div>
-    `);
-  }
+    `); // end append
+  } // end for loop
 
 
+  // update monthly salary
   $('#total-salaries').empty();
   $('#total-salaries').append(`
   <span id="monthly-cost">$${monthlyCost()}</span><br>/ month
   `)
 
+  // if cost is over 20k, add a red background
   if (monthlyCost() >= 20000) {
     $('#total-salaries').addClass('red-background')
   } else {
     $('#total-salaries').removeClass('red-background')
   }
     
-}
+} // end render

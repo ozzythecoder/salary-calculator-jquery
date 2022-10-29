@@ -5,8 +5,6 @@ body, h1, h2, h3, p, li {
 
 #container {
   margin: 10px 10%;
-  padding: 10px 0;
-  min-width: 500px;
   border: 2px black solid;
   border-radius: 20px;
   overflow-x: scroll;
@@ -14,7 +12,7 @@ body, h1, h2, h3, p, li {
 
 #content {
   margin: 10px 10%;
-
+  padding: 2em 4em;
 }
 
 .subheading {
@@ -40,6 +38,8 @@ body, h1, h2, h3, p, li {
 #feedback-area {
   height: 1em;
   padding: 1em;
+  margin: 0 auto;
+  text-align: center;
   line-height: 1;
   color:rgb(199, 0, 0);
   font-weight: bold;
@@ -47,12 +47,14 @@ body, h1, h2, h3, p, li {
 
 #employee-table {
   display: table;
+  margin: 0 auto;
 }
 
 #table-caption {
   display: table-caption;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: bold;
+  padding: 0.5em 0 0.5em 10px;
 }
 
 #table-header {
