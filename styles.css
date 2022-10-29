@@ -10,6 +10,10 @@ body, h1, h2, h3, p, li {
   overflow-x: scroll;
 }
 
+h1 {
+  text-align: center;
+}
+
 #content {
   margin: 10px 10%;
   padding: 2em 4em;
