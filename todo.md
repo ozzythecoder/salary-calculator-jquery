@@ -12,4 +12,4 @@
 - [x] Handle submit
 - [x] Error handler
 - [x] Renderer
-- [ ] Format numbers as currency
+- [x] Format numbers as currency

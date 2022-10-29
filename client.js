@@ -5,25 +5,25 @@ let employees = [
   {
     firstName: 'Thomas',
     lastName: 'Anderson',
-    employeeID: 78309,
-    jobTitle: 'Button Pusher',
-    annualSalary: 55000,
+    employeeID: '7039',
+    jobTitle: 'Sales Lead',
+    annualSalary: 50000,
     globalID: 0
-  },
-  {
-    firstName: 'Thelonius',
-    lastName: 'Monk',
-    employeeID: 202910,
-    jobTitle: 'Master of Soul',
-    annualSalary: 100000,
-    globalID: 1
   },
   {
     firstName: 'Ebenezer',
     lastName: 'Scrooge',
-    employeeID: 01,
-    jobTitle: 'Pincher of Pennies',
-    annualSalary: 10000000,
+    employeeID: '4401',
+    jobTitle: 'CFO',
+    annualSalary: 70000,
+    globalID: 1
+  },
+  {
+    firstName: 'Jennifer',
+    lastName: 'Hale',
+    employeeID: '0021',
+    jobTitle: 'Public Relations',
+    annualSalary: 65500,
     globalID: 2
   }
 ];
@@ -101,12 +101,14 @@ function onSubmit() {
 
 // delete employee
 function onDelete() {
-  console.log('in onDelete()');
-  let idToDelete = $(this).parent().parent().data('id');
-  console.log('id to delete is', idToDelete);
 
+  // traverse DOM & grab the global ID to delete
+  let idToDelete = $(this).parent().parent().data('id');
+
+  // loop over employees array
   for (let emp of employees) {
     if (emp.globalID == idToDelete) {
+      // if ID to delete is a match, remove said employee from the array
       employees.splice(employees.indexOf(emp), 1);
     }
   }
@@ -117,10 +119,12 @@ function onDelete() {
 // calculate monthly cost of all employees' salaries
 function monthlyCost() {
   let total = 0;
+
   for (let emp of employees) {
     total += emp.annualSalary;
-  }
-  return Math.ceil(total / 12); // rounds up to the nearest dollar
+  } // get total salaries per year
+
+  return Math.ceil(total / 12); // divide by 12 and round up to the nearest dollar
 } // end monthlyCost()
 
 // format a number as currency
@@ -129,7 +133,7 @@ function formatDollars(num) {
     style: 'currency',
     currency: 'USD'})
   return dollars.format(num).slice(0, -3); // remove cents
-}
+} // end formatDollars()
 
 function render() {
   
@@ -161,15 +165,16 @@ function render() {
     `); // end append
   } // end for loop
 
+  let monthly = monthlyCost(); // get monthly salary cost
 
-  // update monthly salary
+  // update monthly salary cost
   $('#total-salaries').empty();
   $('#total-salaries').append(`
-  <span id="monthly-cost">${formatDollars(monthlyCost())}</span><br>/ month
+  <span id="monthly-cost">${formatDollars(monthly)}</span><br>/ month
   `)
 
   // if cost is over 20k, add a red background
-  if (monthlyCost() >= 20000) {
+  if (monthly >= 20000) {
     $('#total-salaries').addClass('red-background')
   } else {
     $('#total-salaries').removeClass('red-background')
