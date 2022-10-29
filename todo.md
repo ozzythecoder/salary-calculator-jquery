@@ -1,5 +1,5 @@
 # HTML
-- [ ] Refresher on forms & inputs
+- [x] Refresher on forms & inputs
 
 # CSS
 - [x] How to create a table in CSS
@@ -9,4 +9,4 @@
 # JS / jQ
 - [x] Handle submit
 - [x] Error handler
-- [ ] Renderer
+- [x] Renderer

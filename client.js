@@ -28,6 +28,15 @@ let employees = [
 ];
 let globalID = 0;
 
+// calculate monthly cost of all employees' salaries
+const monthlyCost = () => {
+  let total = 0;
+  for (let emp of employees) {
+    total += emp.annualSalary;
+  }
+  return Math.ceil(total / 12); // rounds up to the nearest dollar
+}
+
 function onReady() {
   console.log('jQ');
 
@@ -39,6 +48,7 @@ function onReady() {
   $('#table-body').on('click', '.delete-btn', onDelete)
 }
 
+// delete employee
 function onDelete() {
   console.log('in onDelete()');
   let idToDelete = $(this).parent().parent().data('id');
@@ -51,21 +61,37 @@ function onDelete() {
   }
 
   render();
-}
+} // end onDelete()
 
+
+// handle errors
 function handleErrors(obj) {
   
-  // if any field are blank, reject input
+  // if any field is blank, reject input
   if (!obj.firstName || !obj.lastName || !obj.employeeID || !obj.jobTitle || !obj.annualSalary) {
     console.log('all fields required');
+    $('#feedback-area').empty();
+    $('#feedback-area').append(`
+      <p>All inputs required.</p>
+    `)
     return false;
   }
 
+  if (obj.employeeID < 0 || obj.annualSalary <= 0) {
+    console.log('positive input required');
+    $('#feedback-area').empty();
+    $('#feedback-area').append(`
+    <p>Invalid input. Numbers must be positive.</p>
+    `)
+    return false;
+  }
+  
   return true;
-}
+} // end handleErrors
 
+// add new employee to array
 function onSubmit() {
-
+  
   let newEmployee = {
     firstName: $('#first-name').val(),
     lastName: $('#last-name').val(),
@@ -74,16 +100,17 @@ function onSubmit() {
     annualSalary: Number($('#annual-salary').val()),
     globalID: globalID
   }
-
+  
+  // check input for errors
   if (!handleErrors(newEmployee)) {
     console.log('error!');
     return false;
   }
-
-  // if no errors, push new employee and increment global id
+  // if no errors, push new employee, increment global id, and clear errors
   employees.push(newEmployee);
   globalID++;
-
+  $('#feedback-area').empty();
+  
   // empty inputs
   $('#first-name').val('');
   $('#last-name').val('');
@@ -130,14 +157,13 @@ function render() {
     `);
   }
 
-  let monthlyCost = Math.ceil(totalSalaries / 12)
-  
+
   $('#total-salaries').empty();
   $('#total-salaries').append(`
-  <span id="monthly-cost">$${monthlyCost}</span><br>/ month
+  <span id="monthly-cost">$${monthlyCost()}</span><br>/ month
   `)
 
-  if (monthlyCost >= 20000) {
+  if (monthlyCost() >= 20000) {
     $('#total-salaries').addClass('red-background')
   } else {
     $('#total-salaries').removeClass('red-background')

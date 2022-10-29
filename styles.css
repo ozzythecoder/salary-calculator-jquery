@@ -5,21 +5,45 @@ body, h1, h2, h3, p, li {
 
 #container {
   margin: 10px 10%;
-  padding: 10px 10%;
+  padding: 10px 0;
+  min-width: 500px;
   border: 2px black solid;
   border-radius: 20px;
+  overflow-x: scroll;
 }
 
 #content {
-  margin: 0 auto;
+  margin: 10px 10%;
 
+}
+
+.subheading {
+  text-align: center;
+  padding: 1em;
+}
+
+#add-employee-form button {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  height: 2em;
+}
+
+#add-employee-form input {
+  display: block;
+  width: 200px;
+  height: 1.5em;
+  margin: 0 auto;
+  margin-bottom: 0.5em;
 }
 
 #feedback-area {
-  height: 2em;
-  padding: 0.5em;
+  height: 1em;
+  padding: 1em;
+  line-height: 1;
+  color:rgb(199, 0, 0);
+  font-weight: bold;
 }
-
 
 #employee-table {
   display: table;
@@ -70,6 +94,14 @@ body, h1, h2, h3, p, li {
 .table-row-cell {
   padding: 10px;
   display: table-cell;
+}
+
+.employee-id-cell {
+  width: 80px;
+}
+
+.job-title-cell {
+  width: 120px;
 }
 
 .salary-cell {

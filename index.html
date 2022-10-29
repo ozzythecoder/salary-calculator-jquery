@@ -13,43 +13,46 @@
 
 <body>
   <div id="container">
+
     <div id="content">
       <h1>Salary Calculator</h1>
+      
       <div id="add-an-employee">
         <div class="subheading">
           <h3>Add an employee:</h3>
         </div>
         <div id="add-employee-form">
+
             <!-- Inputs with semantic labels visible only to screen readers -->
             <label for="first-name" class="visually-hidden">First Name</label>
             <input type="text" id="first-name" placeholder="First Name" />
             <label for="last-name" class="visually-hidden">Last Name</label>
             <input type="text" id="last-name" placeholder="Last Name" />
-            <label for="employee-id" class="visually-hidden">Employee ID</label>
-            <input type="text" id="employee-id" placeholder="ID" />
+            <label for="employee-id" class="visually-hidden">Emlpoyee ID</label>
+            <input type="number" id="employee-id" placeholder="ID" />
             <label for="job-title" class="visually-hidden">Job Title</label>
             <input type="text" id="job-title" placeholder="Title" />
             <label for="annual-salary" class="visually-hidden">Annual Salary</label>
-            <input type="text" id="annual-salary" placeholder="Annual Salary" />
+            <input type="number" id="annual-salary" placeholder="Annual Salary" />
             <button id="submit-employee">Submit</button>
         </div>
-        <div id="feedback-area">Feedback here
+        <div id="feedback-area">
         </div>
       </div>
       <div id="employee-display">
         <div id="employee-table">
           <div id="table-caption">Employees & Salaries</div>
           <div id="table-header">
-            <div class="table-header-cell">
+            <div class="table-header-cell first-name-cell">
               First Name
             </div>
-            <div class="table-header-cell">
+            <div class="table-header-cell last-name-cell">
               Last Name
             </div>
-            <div class="table-header-cell">
-              Employee ID
+            <div class="table-header-cell employee-id-cell">
+              ID #
             </div>
-            <div class="table-header-cell">
+            <div class="table-header-cell job-title-cell">
               Job Title
             </div>
             <div class="table-header-cell salary-cell">
