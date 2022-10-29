@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,16 +14,24 @@
 <body>
   <div id="container">
     <div id="content">
-        <h1>Salary Calculator</h1>
+      <h1>Salary Calculator</h1>
       <div id="add-an-employee">
-        <div class="subheading"><h3>Add an employee:</h3></div>
+        <div class="subheading">
+          <h3>Add an employee:</h3>
+        </div>
         <div id="add-employee-form">
-          <input type="text" id="first-name" placeholder="First Name" />
-          <input type="text" id="last-name" placeholder="Last Name"/>
-          <input type="text" id="employee-id" placeholder="ID"/>
-          <input type="text" id="job-title" placeholder="Title"/>
-          <input type="text" id="annual-salary" placeholder="Annual Salary"/>
-          <button id="submit-employee">Submit</button>
+            <!-- Inputs with semantic labels visible only to screen readers -->
+            <label for="first-name" class="visually-hidden">First Name</label>
+            <input type="text" id="first-name" placeholder="First Name" />
+            <label for="last-name" class="visually-hidden">Last Name</label>
+            <input type="text" id="last-name" placeholder="Last Name" />
+            <label for="employee-id" class="visually-hidden">Employee ID</label>
+            <input type="text" id="employee-id" placeholder="ID" />
+            <label for="job-title" class="visually-hidden">Job Title</label>
+            <input type="text" id="job-title" placeholder="Title" />
+            <label for="annual-salary" class="visually-hidden">Annual Salary</label>
+            <input type="text" id="annual-salary" placeholder="Annual Salary" />
+            <button id="submit-employee">Submit</button>
         </div>
         <div id="feedback-area">Feedback here
         </div>
@@ -33,7 +41,7 @@
           <div id="table-caption">Employees & Salaries</div>
           <div id="table-header">
             <div class="table-header-cell">
-              First Name  
+              First Name
             </div>
             <div class="table-header-cell">
               Last Name
@@ -51,9 +59,10 @@
               Delete?
             </div>
           </div>
-          
+
           <div id="table-body">
-          
+            <!-- Table content will be appended here -->
+
           </div>
           <div id="table-footer">
             <div class="table-footer-cell"></div>
@@ -65,7 +74,8 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
   </div>
 </body>
+
 </html>

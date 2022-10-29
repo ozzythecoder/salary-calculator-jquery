@@ -1,4 +1,4 @@
-body h1 h2 h3 p li {
+body, h1, h2, h3, p, li {
   margin: 0;
   padding: 0;
 }
@@ -35,6 +35,16 @@ body h1 h2 h3 p li {
   display: table-header-group;
   font-weight: bold;
   background-color: #a5a5a5;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .table-header-cell {
@@ -88,6 +98,14 @@ body h1 h2 h3 p li {
 
 #total-salaries {
   height: 20px;
-  font-size: 22px;
   text-align: right;
+}
+
+.red-background {
+  background-color: rgb(199, 0, 0);
+  color: white;
+}
+
+#monthly-cost {
+  font-size: 22px;
 }

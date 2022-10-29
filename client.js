@@ -16,6 +16,14 @@ let employees = [
     jobTitle: 'Master of Soul',
     annualSalary: 100000,
     globalID: 89
+  },
+  {
+    firstName: 'Ebenezer',
+    lastName: 'Scrooge',
+    employeeID: 01,
+    jobTitle: 'Pincher of Pennies',
+    annualSalary: 10000000,
+    globalID: 420
   }
 ];
 let globalID = 0;
@@ -121,9 +129,18 @@ function render() {
     </div>
     `);
   }
+
+  let monthlyCost = Math.ceil(totalSalaries / 12)
+  
   $('#total-salaries').empty();
   $('#total-salaries').append(`
-    $${Math.ceil(totalSalaries / 12)}<br>/ month
+  <span id="monthly-cost">$${monthlyCost}</span><br>/ month
   `)
+
+  if (monthlyCost >= 20000) {
+    $('#total-salaries').addClass('red-background')
+  } else {
+    $('#total-salaries').removeClass('red-background')
+  }
     
 }
