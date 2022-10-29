@@ -28,7 +28,8 @@ let employees = [
   }
 ];
 
-let globalID = employees.length; // unique identifier for employees
+// unique identifier for employees
+let globalID = employees.length;
 
 function onReady() {
   console.log('jQ');
@@ -122,8 +123,16 @@ function monthlyCost() {
   return Math.ceil(total / 12); // rounds up to the nearest dollar
 } // end monthlyCost()
 
-function render() {
+// format a number as currency
+function formatDollars(num) {
+  let dollars = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'})
+  return dollars.format(num).slice(0, -3); // remove cents
+}
 
+function render() {
+  
   $('#table-body').empty();
 
   for (let emp of employees) {
@@ -143,7 +152,7 @@ function render() {
         ${emp.jobTitle}
       </div>    
       <div class="table-row-cell salary-cell">
-        $${emp.annualSalary}
+        ${formatDollars(emp.annualSalary)}
       </div>
       <div class="table-row-cell delete-cell">
         <button class="delete-btn">Delete</button>
@@ -156,7 +165,7 @@ function render() {
   // update monthly salary
   $('#total-salaries').empty();
   $('#total-salaries').append(`
-  <span id="monthly-cost">$${monthlyCost()}</span><br>/ month
+  <span id="monthly-cost">${formatDollars(monthlyCost())}</span><br>/ month
   `)
 
   // if cost is over 20k, add a red background
