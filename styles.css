@@ -12,7 +12,7 @@ body {
 }
 
 footer {
-  height: 100px;
+  height: 50px;
 }
 
 #container {
@@ -179,4 +179,8 @@ button:active {
 
 #monthly-cost {
   font-size: 22px;
+}
+
+.whitespace {
+  height: 50px;
 }
