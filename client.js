@@ -19,12 +19,20 @@ let employees = [
     globalID: 1
   },
   {
-    firstName: 'Jennifer',
-    lastName: 'Hale',
+    firstName: 'Søren',
+    lastName: 'Kierkegaard',
     employeeID: '0021',
     jobTitle: 'Public Relations',
     annualSalary: 65500,
     globalID: 2
+  },
+  {
+    firstName: 'Marie-Ann',
+    lastName: 'Lindegård',
+    employeeID: '2234',
+    jobTitle: 'L6 Supervisor',
+    annualSalary: 59000,
+    globalID: 4
   }
 ];
 
@@ -52,40 +60,32 @@ function handleErrors(obj) {
   // if any field is blank, reject input
   if (!obj.firstName || !obj.lastName || obj.employeeID === '' || !obj.jobTitle || obj.annualSalary === '') {
     console.log('all fields required');
-    $('#feedback-area').empty();
-    $('#feedback-area').append(`
-    <p>All inputs required.</p>
-    `)
+    clearErrors();
+    printErrors('noInput');
     return false;
   }
   
   // if any numerical input is zeror or less, reject input
   if (obj.employeeID <= 0 || obj.annualSalary <= 0) {
     console.log('positive input required');
-    $('#feedback-area').empty();
-    $('#feedback-area').append(`
-    <p>Invalid input. ID and salary inputs must be greater than zero.</p>
-    `)
+    clearErrors();
+    printErrors('zeroNumber');
     return false;
   }
 
   // if either first name or last name contains restricted characters, reject input
   if (invalidNameRegex.test(obj.firstName) || invalidNameRegex.test(obj.lastName)) {
     console.log('invalid name');
-    $('#feedback-area').empty();
-    $('#feedback-area').append(`
-    <p>Invalid input. Names may only contain letters.</p>
-    `)
+    clearErrors();
+    printErrors('badName');
     return false;
   }
 
   // if job title contains restricted characters, reject input
   if (invalidTitleRegex.test(obj.jobTitle)) {
     console.log('invalid job title');
-    $('#feedback-area').empty();
-    $('#feedback-area').append(`
-    <p>Invalid input. Job title may only contain letters and numbers, and must include at least one letter.</p>
-    `)
+    clearErrors();
+    printErrors('badTitle');
     return false;
   }
   
@@ -102,29 +102,24 @@ function onSubmit(event) {
     lastName: $('#last-name').val(),
     employeeID: $('#employee-id').val(),
     jobTitle: $('#job-title').val(),
-    annualSalary: $('#annual-salary').val(),
+    annualSalary: $('#annual-salary').val(), // left as a number for error comparison
     globalID: globalID
   }
   
-  // check input for errors
+  // check input for errors; if no errors, continue
   if (!handleErrors(newEmployee)) {
     console.log('error!');
     return false;
   }
 
-  // if no errors, convert annual salary to a number, push new employee, increment global id, and clear errors
+  // convert annual salary to a number
   newEmployee.annualSalary = Number(newEmployee.annualSalary)
-  employees.push(newEmployee);
-  globalID++;
-  $('#feedback-area').empty();
+  employees.push(newEmployee); // push new employee to array
+  globalID++; // increment global ID
   
-  // empty inputs
-  $('#first-name').val('');
-  $('#last-name').val('');
-  $('#employee-id').val('');
-  $('#job-title').val('');
-  $('#annual-salary').val('');
-
+  // empty error field, empty inputs, and render
+  clearErrors();
+  clearForm();
   render();
 } // end onSubmit()
 
@@ -163,6 +158,27 @@ function formatDollars(num) {
     currency: 'USD'})
   return dollars.format(num).slice(0, -3); // remove cents
 } // end formatDollars()
+
+function clearForm() {
+  $('input').val('');
+}
+
+function clearErrors() {
+  $('#feedback-area').empty();
+}
+
+function printErrors(err) {
+
+  const errorTypes = {
+    noInput: `<p>All inputs required.</p>`,
+    zeroNumber: `<p>Invalid input. ID and salary inputs must be greater than zero.</p>`,
+    badName: `<p>Invalid input. Names may only contain letters.</p>`,
+    badTitle: `<p>Invalid input. Job title may only contain letters and numbers, and must include at least one letter.</p>`
+  }
+
+  clearErrors();
+  $('#feedback-area').append(errorTypes[err])
+}
 
 function render() {
   
