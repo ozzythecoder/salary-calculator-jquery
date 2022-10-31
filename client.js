@@ -31,6 +31,9 @@ let employees = [
 // unique identifier for employees
 let globalID = employees.length;
 
+// regex for names (inclusive of names with diacritics)
+const invalidNameRegex = /[^a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ-ỿ_-]/
+
 function onReady() {
   console.log('jQ');
 
@@ -55,6 +58,7 @@ function handleErrors(obj) {
     return false;
   }
   
+  // if any numerical input is zeror or less, reject input
   if (obj.employeeID <= 0 || obj.annualSalary <= 0) {
     console.log('positive input required');
     $('#feedback-area').empty();
@@ -63,7 +67,16 @@ function handleErrors(obj) {
     `)
     return false;
   }
-  
+
+  // if either first name or last name includes restricted characters, reject input
+  if (invalidNameRegex.test(obj.firstName) || invalidNameRegex.test(obj.lastName)) {
+    console.log('invalid name');
+    $('#feedback-area').empty();
+    $('#feedback-area').append(`
+    <p>Invalid input. Names may not contain special characters.</p>
+    `)
+    return false;
+  }
   
   return true;
 } // end handleErrors
@@ -87,7 +100,8 @@ function onSubmit(event) {
     console.log('error!');
     return false;
   }
-  // if no errors, turn annual salary to a number, push new employee, increment global id, and clear errors
+
+  // if no errors, convert annual salary to a number, push new employee, increment global id, and clear errors
   newEmployee.annualSalary = Number(newEmployee.annualSalary)
   employees.push(newEmployee);
   globalID++;
