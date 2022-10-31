@@ -46,23 +46,24 @@ function onReady() {
 function handleErrors(obj) {
   
   // if any field is blank, reject input
-  if (!obj.firstName || !obj.lastName || !obj.employeeID || !obj.jobTitle || !obj.annualSalary) {
+  if (!obj.firstName || !obj.lastName || obj.employeeID === '' || !obj.jobTitle || obj.annualSalary === '') {
     console.log('all fields required');
     $('#feedback-area').empty();
     $('#feedback-area').append(`
-      <p>All inputs required.</p>
+    <p>All inputs required.</p>
     `)
     return false;
   }
-
-  if (obj.employeeID < 0 || obj.annualSalary <= 0) {
+  
+  if (obj.employeeID <= 0 || obj.annualSalary <= 0) {
     console.log('positive input required');
     $('#feedback-area').empty();
     $('#feedback-area').append(`
-    <p>Invalid input. Numbers must be positive.</p>
+    <p>Invalid input. ID and salary inputs must be greater than zero.</p>
     `)
     return false;
   }
+  
   
   return true;
 } // end handleErrors
@@ -77,7 +78,7 @@ function onSubmit(event) {
     lastName: $('#last-name').val(),
     employeeID: $('#employee-id').val(),
     jobTitle: $('#job-title').val(),
-    annualSalary: Number($('#annual-salary').val()),
+    annualSalary: $('#annual-salary').val(),
     globalID: globalID
   }
   
@@ -86,7 +87,8 @@ function onSubmit(event) {
     console.log('error!');
     return false;
   }
-  // if no errors, push new employee, increment global id, and clear errors
+  // if no errors, turn annual salary to a number, push new employee, increment global id, and clear errors
+  newEmployee.annualSalary = Number(newEmployee.annualSalary)
   employees.push(newEmployee);
   globalID++;
   $('#feedback-area').empty();
