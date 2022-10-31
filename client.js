@@ -68,8 +68,10 @@ function handleErrors(obj) {
 } // end handleErrors
 
 // add new employee to array
-function onSubmit() {
+function onSubmit(event) {
   
+  event.preventDefault();
+
   let newEmployee = {
     firstName: $('#first-name').val(),
     lastName: $('#last-name').val(),
