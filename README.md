@@ -8,5 +8,7 @@ This program accepts an employee's name, ID number, title, and annual salary, an
 
 ### Notes
 
-- The ID and number inputs will not accept any input under 0.
+- The ID and number inputs will not accept any input equal to or less than 0.
 - All fields are required; you can't add an employee without a last name, for example.
+- Employee name cannot include numbers or special characters. Spaces, dashes, and letters with diacritics are allowed.
+- Job title cannot include special characters. Spaces, dashes, numbers, and letters with diacritics are allowed. However, a job title cannot include only numbers.
