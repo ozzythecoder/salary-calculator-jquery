@@ -31,8 +31,9 @@ let employees = [
 // unique identifier for employees
 let globalID = employees.length;
 
-// regex for names (inclusive of names with diacritics)
-const invalidNameRegex = /[^a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ-ỿ_-]/
+// regex for employee names and job title names
+const invalidNameRegex = /[^a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ-ỿ_-]/ // inclusive of diacritics
+const invalidTitleRegex = /[^a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ-ỿ0-9_-]|^[0-9]*$/ // inclusive of diacritics and numbers, but cannot contain only numbers
 
 function onReady() {
   console.log('jQ');
@@ -68,12 +69,22 @@ function handleErrors(obj) {
     return false;
   }
 
-  // if either first name or last name includes restricted characters, reject input
+  // if either first name or last name contains restricted characters, reject input
   if (invalidNameRegex.test(obj.firstName) || invalidNameRegex.test(obj.lastName)) {
     console.log('invalid name');
     $('#feedback-area').empty();
     $('#feedback-area').append(`
-    <p>Invalid input. Names may not contain special characters.</p>
+    <p>Invalid input. Names may only contain letters.</p>
+    `)
+    return false;
+  }
+
+  // if job title contains restricted characters, reject input
+  if (invalidTitleRegex.test(obj.jobTitle)) {
+    console.log('invalid job title');
+    $('#feedback-area').empty();
+    $('#feedback-area').append(`
+    <p>Invalid input. Job title may only contain letters and numbers, and must include at least one letter.</p>
     `)
     return false;
   }
