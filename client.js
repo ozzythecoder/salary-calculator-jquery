@@ -54,44 +54,6 @@ function onReady() {
   $('#table-body').on('click', '.delete-btn', onDelete)
 }
 
-// handle errors
-function handleErrors(obj) {
-  
-  // if any field is blank, reject input
-  if (!obj.firstName || !obj.lastName || obj.employeeID === '' || !obj.jobTitle || obj.annualSalary === '') {
-    console.log('all fields required');
-    clearErrors();
-    printErrors('noInput');
-    return false;
-  }
-  
-  // if any numerical input is zeror or less, reject input
-  if (obj.employeeID <= 0 || obj.annualSalary <= 0) {
-    console.log('positive input required');
-    clearErrors();
-    printErrors('zeroNumber');
-    return false;
-  }
-
-  // if either first name or last name contains restricted characters, reject input
-  if (invalidNameRegex.test(obj.firstName) || invalidNameRegex.test(obj.lastName)) {
-    console.log('invalid name');
-    clearErrors();
-    printErrors('badName');
-    return false;
-  }
-
-  // if job title contains restricted characters, reject input
-  if (invalidTitleRegex.test(obj.jobTitle)) {
-    console.log('invalid job title');
-    clearErrors();
-    printErrors('badTitle');
-    return false;
-  }
-  
-  return true;
-} // end handleErrors
-
 // add new employee to array
 function onSubmit(event) {
   
@@ -158,6 +120,44 @@ function formatDollars(num) {
     currency: 'USD'})
   return dollars.format(num).slice(0, -3); // remove cents
 } // end formatDollars()
+
+// handle errors
+function handleErrors(obj) {
+  
+  // if any field is blank, reject input
+  if (!obj.firstName || !obj.lastName || obj.employeeID === '' || !obj.jobTitle || obj.annualSalary === '') {
+    console.log('all fields required');
+    clearErrors();
+    printErrors('noInput');
+    return false;
+  }
+  
+  // if any numerical input is zeror or less, reject input
+  if (obj.employeeID <= 0 || obj.annualSalary <= 0) {
+    console.log('positive input required');
+    clearErrors();
+    printErrors('zeroNumber');
+    return false;
+  }
+
+  // if either first name or last name contains restricted characters, reject input
+  if (invalidNameRegex.test(obj.firstName) || invalidNameRegex.test(obj.lastName)) {
+    console.log('invalid name');
+    clearErrors();
+    printErrors('badName');
+    return false;
+  }
+
+  // if job title contains restricted characters, reject input
+  if (invalidTitleRegex.test(obj.jobTitle)) {
+    console.log('invalid job title');
+    clearErrors();
+    printErrors('badTitle');
+    return false;
+  }
+  
+  return true;
+} // end handleErrors
 
 function clearForm() {
   $('input').val('');
