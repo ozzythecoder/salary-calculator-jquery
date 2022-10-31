@@ -32,8 +32,8 @@ let employees = [
 let globalID = employees.length;
 
 // regex for employee names and job title names
-const invalidNameRegex = /[^a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ-ỿ_-]/ // inclusive of diacritics
-const invalidTitleRegex = /[^a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ-ỿ0-9_-]|^[0-9]*$/ // inclusive of diacritics and numbers, but cannot contain only numbers
+const invalidNameRegex = /[^a-zA-Z\u00c0-\u024f\u1e00-\u1eff_-]/ // inclusive of diacritics
+const invalidTitleRegex = /[^a-zA-Z\u00c0-\u024f\u1e00-\u1eff0-9_-]|^[0-9]*$/ // inclusive of diacritics and numbers, but cannot contain only numbers
 
 function onReady() {
   console.log('jQ');
